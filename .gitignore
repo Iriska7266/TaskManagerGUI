@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environments / secrets / tests
+private/
+*/Tests
+.env
+*.dat
+*test.py
+
+# Tool caches
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+
+# Flet
+.flet/
+build/
+storage/
+*.toml
+
+# IDE
+.idea/
+.vscode/
+
+# SQL codes
+SQL/

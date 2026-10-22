@@ -1,0 +1,5 @@
+python-dotenv==1.2.2
+SQLAlchemy==2.0.51
+psycopg2==2.9.11
+pytz==2026.5
+flet-cli>=1.0.3
