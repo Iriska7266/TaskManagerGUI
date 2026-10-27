@@ -1,9 +1,9 @@
+import os
+import flet as ft
 from pathlib import Path
+from pickle import dump
 
-from backend.settings import DOTENV_PATH
-from GUI.auth_page import *
-from GUI.dotenv_set_page import show_dotenv_window
-from GUI.tasks_page import *
+from backend.settings import DOTENV_PATH, SETTINGS_PATH
 
 
 work_dir = Path(__file__).resolve().parent
@@ -22,9 +22,11 @@ async def start(page: ft.Page):
     # page.vertical_alignment = ft.MainAxisAlignment.CENTER
 
     def auth_page():
+        from GUI.auth_page import get_auth_page
         return get_auth_page(page)
 
     def db_settings():
+        from GUI.dotenv_set_page import show_dotenv_window
         return show_dotenv_window(page)
 
     auth_view = ft.View(
@@ -40,6 +42,13 @@ async def start(page: ft.Page):
         page.views.clear()
         page.views.append(auth_view)
         auth_view.padding = 50
+
+        from GUI.tasks_page import UserWindow
+
+        settings = {"width": page.width, "height": page.height}
+
+        with open(SETTINGS_PATH, "wb") as f:
+            dump(settings, f)
 
         if page.route == "/db_conf":
             page.views.append(

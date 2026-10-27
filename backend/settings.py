@@ -12,3 +12,4 @@ os.makedirs(data_dir, exist_ok=True)
 
 LOCAL_USER_DATA = data_dir / "local_user_data.dat"
 DOTENV_PATH = data_dir / ".env"
+SETTINGS_PATH = data_dir / "settings.dat"

@@ -1,5 +1,13 @@
-from dataclasses import dataclass
+from backend.settings import SETTINGS_PATH
 
+from dataclasses import dataclass
+from pickle import load
+
+
+with open(SETTINGS_PATH, 'rb') as f:
+    settings = load(f)
+WIDTH = settings["width"]
+HEIGHT = settings["height"]
 
 @dataclass
 class DotenvSettingsPageStyle:
@@ -19,8 +27,8 @@ class AuthPageStyle:
 @dataclass
 class TasksPageStyle:
     # Task table
-    task_table_height: int = 780
-    task_table_width: int = 1160
+    task_table_height: int = HEIGHT * 0.8 # 780
+    task_table_width: int = WIDTH * 0.725 # 1160
 
     # Notification
     max_title_len_for_notif: int = 45
